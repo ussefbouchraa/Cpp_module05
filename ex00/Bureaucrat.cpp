@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/29 03:05:08 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/02/29 07:11:10 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n)
     }
     catch(int res)
     {
+        this->Grade = 150;
         std::cout << "err:: Invalid Grade" << std::endl;
-        exit(0);
     }
 }
 
@@ -39,30 +39,55 @@ void Bureaucrat::increment_Grade()
 {
     try
     {
-            if (this->Grade >= 2 && this->Grade <= 150)
+            if (this->Grade > 1)
                 this->Grade--;
         else
             throw this->Grade;
     }
     catch(int res)
     {
-        std::cout << "err:: Invalid Operation [out_of_range] " << std::endl;
+        std::cout << "err:: Grade is too low [out_of_range] " << std::endl;
     }
 }
 void Bureaucrat::decrement_Grade()
 {
     try
     {
-        if(this->Grade >= 1 && this->Grade < 150)
+        if(this->Grade < 150)
             this->Grade++;
         else
             throw this->Grade;
     }
     catch(int res)
     {
-        std::cout << "err:: Invalid Operation [out_of_range] " << std::endl;
+        std::cout << "err:: Grade is too high [out_of_range] " << std::endl;
     }
 }
+// void Bureaucrat::decrement_Grade() {
+//     try {
+//         if (Grade < 150)
+//             this->Grade++;
+//         else
+//             throw GradeTooHighExceptions(); 
+//     } catch (const GradeTooHighExceptions &e) { 
+//         std::cerr << "Error: " << e.what() << std::endl;
+//     }
+// }
+// void Bureaucrat::increment_Grade()
+// {
+//     try
+//     {
+//         if(Grade > 1)
+//             this->Grade--;
+//         else
+//             throw GradeTooLowExceptions();
+//     }
+//     catch(const GradeTooLowExceptions &e)
+//     {
+//         std::cerr << e.what() << '\n';
+//     }
+    
+// }
 
 void Bureaucrat::GradeTooHighException()
 {
@@ -75,17 +100,21 @@ void Bureaucrat::GradeTooLowException()
 }
 
 
-std::string Bureaucrat::get_Name()
+std::string Bureaucrat::get_Name()const
 {
     return (this->Name);
 }
 
-int Bureaucrat::get_Grade()
+int Bureaucrat::get_Grade()const
 {
     return (this->Grade);
 }
 
-  
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : Name(rhs.Name), Grade(rhs.Grade)
+{
+}
+
+
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &rhs)
 {
     if(this != &rhs)

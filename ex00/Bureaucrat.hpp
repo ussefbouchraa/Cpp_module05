@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/28 22:21:52 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/02/29 07:00:05 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ private:
 public:
     Bureaucrat();
     Bureaucrat(const std::string name, int grade);
+    Bureaucrat(const Bureaucrat &rhs);
+    
     Bureaucrat & operator=(const Bureaucrat &rhs);
     
     void increment_Grade(); //--
@@ -29,10 +31,25 @@ public:
     void GradeTooHighException();// 1
     void GradeTooLowException(); // 150
     
-    std::string get_Name();
-    int get_Grade();
+    std::string get_Name() const;
+    int get_Grade() const;
     
     ~Bureaucrat();
+
+    class GradeTooLowExceptions : public std::exception {
+public:
+    virtual const char* what() const throw() {
+        return "Grade is too low!";
+    }
+};
+
+class GradeTooHighExceptions : public std::exception {
+public:
+    virtual const char* what() const throw() {
+        return "Grade is too high!";
+    }
+};
+
 };
     std::ostream& operator<<(std::ostream& out, Bureaucrat& rhs);
 

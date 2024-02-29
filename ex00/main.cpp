@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:06:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/29 03:37:43 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/02/29 07:00:02 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int main()
     finance.increment_Grade();
     finance.decrement_Grade();
     finance.decrement_Grade();
-
-    new_member.increment_Grade();
     
     std::cout << finance << std::endl;
     std::cout << new_member << std::endl;
+
+    Bureaucrat b("moo", 50);
+    b.decrement_Grade();
+    std::cout << b ;
 }
