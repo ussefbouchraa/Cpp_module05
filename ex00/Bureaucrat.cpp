@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/29 09:02:28 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:05:11 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
 }
     
     
-    
-    
-         
-    // try
-    // {
-    //    if(_g >= 1 && _g <= 150)
-    //             this->Grade = _g;
-    //     else
-    //         throw this->Grade;
-    // }
-    // catch(int res)
-    // {
-    //     this->Grade = 150;
-    //     std::cout << "err:: Invalid Grade" << std::endl;
-    // }
+// Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
+// {
+//     std::cout << "Parametrized Constructor" << std::endl;      
+//     try
+//     {
+//        if(_g >= 1 && _g <= 150)
+//                 this->Grade = _g;
+//         else
+//             throw this->Grade;
+//     }
+//     catch(int res)
+//     {
+//         this->Grade = 150;
+//         std::cout << "err:: Invalid Grade" << std::endl;
+//     }
 // }
 
 
