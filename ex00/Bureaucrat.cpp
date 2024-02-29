@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/29 07:11:10 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:02:28 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,76 +18,74 @@ Bureaucrat::Bureaucrat() : Name("unknown"), Grade(150)
 }
 
 
-Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n)
+Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
 {
     std::cout << "Parametrized Constructor" << std::endl;
     try
+ {
+    if(_g < 1)
     {
-       if(_g >= 1 && _g <= 150)
-                this->Grade = _g;
-        else
-            throw this->Grade;
+        this->Grade = 1;
+        throw (GradeTooLowExceptions());
     }
-    catch(int res)
+    if(_g > 150)
     {
-        this->Grade = 150;
-        std::cout << "err:: Invalid Grade" << std::endl;
+        this->Grade = 150;   
+        throw (GradeTooHighExceptions());
+    }
+}      
+    catch(const GradeTooLowExceptions& ex){
+        std::cerr << "err::" << ex.what();
+    }
+    catch(const GradeTooHighExceptions& ex){
+        std::cerr << "err::" << ex.what();
     }
 }
+    
+    
+    
+    
+         
+    // try
+    // {
+    //    if(_g >= 1 && _g <= 150)
+    //             this->Grade = _g;
+    //     else
+    //         throw this->Grade;
+    // }
+    // catch(int res)
+    // {
+    //     this->Grade = 150;
+    //     std::cout << "err:: Invalid Grade" << std::endl;
+    // }
+// }
 
+
+void Bureaucrat::decrement_Grade() {
+    try {
+        if (Grade < 150)
+            this->Grade++;
+        else
+            throw GradeTooHighExceptions(); 
+    } catch (const GradeTooHighExceptions &e) { 
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
 void Bureaucrat::increment_Grade()
 {
     try
     {
-            if (this->Grade > 1)
-                this->Grade--;
+        if(Grade > 1)
+            this->Grade--;
         else
-            throw this->Grade;
+            throw GradeTooLowExceptions();
     }
-    catch(int res)
+    catch(const GradeTooLowExceptions &e)
     {
-        std::cout << "err:: Grade is too low [out_of_range] " << std::endl;
+        std::cerr << e.what() << '\n';
     }
-}
-void Bureaucrat::decrement_Grade()
-{
-    try
-    {
-        if(this->Grade < 150)
-            this->Grade++;
-        else
-            throw this->Grade;
-    }
-    catch(int res)
-    {
-        std::cout << "err:: Grade is too high [out_of_range] " << std::endl;
-    }
-}
-// void Bureaucrat::decrement_Grade() {
-//     try {
-//         if (Grade < 150)
-//             this->Grade++;
-//         else
-//             throw GradeTooHighExceptions(); 
-//     } catch (const GradeTooHighExceptions &e) { 
-//         std::cerr << "Error: " << e.what() << std::endl;
-//     }
-// }
-// void Bureaucrat::increment_Grade()
-// {
-//     try
-//     {
-//         if(Grade > 1)
-//             this->Grade--;
-//         else
-//             throw GradeTooLowExceptions();
-//     }
-//     catch(const GradeTooLowExceptions &e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
     
-// }
+}
 
 void Bureaucrat::GradeTooHighException()
 {
