@@ -6,19 +6,18 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/29 09:05:11 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/01 02:08:07 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : Name("unknown"), Grade(150)
+Bureaucrat::Bureaucrat() : Name("default"), Grade(150)
 {
     std::cout << "default Constructor" << std::endl;
 }
 
-
-Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
+Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n)
 {
     std::cout << "Parametrized Constructor" << std::endl;
     try
@@ -28,11 +27,12 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
         this->Grade = 1;
         throw (GradeTooLowExceptions());
     }
-    if(_g > 150)
+    else if(_g > 150)
     {
         this->Grade = 150;   
         throw (GradeTooHighExceptions());
     }
+        this->Grade = _g;
 }      
     catch(const GradeTooLowExceptions& ex){
         std::cerr << "err::" << ex.what();
@@ -41,25 +41,27 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
         std::cerr << "err::" << ex.what();
     }
 }
-    
-    
-// Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
-// {
-//     std::cout << "Parametrized Constructor" << std::endl;      
-//     try
-//     {
-//        if(_g >= 1 && _g <= 150)
-//                 this->Grade = _g;
-//         else
-//             throw this->Grade;
-//     }
-//     catch(int res)
-//     {
-//         this->Grade = 150;
-//         std::cout << "err:: Invalid Grade" << std::endl;
-//     }
-// }
 
+    
+
+void Bureaucrat::set_Grade(int _g)
+{
+    try
+    {
+        if(_g < 1)
+            throw(GradeTooLowExceptions());
+        if(_g > 150)
+            throw(GradeTooHighExceptions());
+        this->Grade = _g; 
+    }
+    catch(GradeTooLowExceptions &ex){
+        std::cerr << "err:: " << ex.what();
+    }
+    catch(GradeTooHighExceptions &ex){
+        std::cerr << "err:: " << ex.what();
+    }
+    
+}
 
 void Bureaucrat::decrement_Grade() {
     try {
@@ -68,9 +70,10 @@ void Bureaucrat::decrement_Grade() {
         else
             throw GradeTooHighExceptions(); 
     } catch (const GradeTooHighExceptions &e) { 
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what();
     }
 }
+
 void Bureaucrat::increment_Grade()
 {
     try
@@ -82,9 +85,8 @@ void Bureaucrat::increment_Grade()
     }
     catch(const GradeTooLowExceptions &e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what();
     }
-    
 }
 
 void Bureaucrat::GradeTooHighException()
@@ -96,7 +98,6 @@ void Bureaucrat::GradeTooLowException()
 {
     this->Grade = 150;
 }
-
 
 std::string Bureaucrat::get_Name()const
 {
@@ -128,5 +129,5 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat &rhs)
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cerr << "Destructor Called\n";
+    std::cerr << this->get_Name()<< " Destructor Called\n";
 }

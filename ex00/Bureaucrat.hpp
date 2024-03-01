@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/02/29 08:38:33 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/01 02:43:28 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Bureaucrat
 {
 private:
-    const std::string Name;
+    const  std::string Name;
     int Grade;
 public:
     Bureaucrat();
@@ -33,22 +33,27 @@ public:
     
     std::string get_Name() const;
     int get_Grade() const;
-    
+    void set_Grade(int _g);    
     ~Bureaucrat();
 
-    class GradeTooLowExceptions : public std::exception {
-public:
-    virtual const char* what() const throw() {
-        return "Grade is too low \n";
-    }
-};
+        class GradeTooLowExceptions : public std::exception {
+    public:
+        virtual const char* what() const throw() {
+            
+            return("Grade is too low\n");
+            // std::cerr <<"Grade is too low\n";
+            // exit(0);
+        }
+    };
 
-class GradeTooHighExceptions : public std::exception {
-public:
-    virtual const char* what() const throw() {
-        return "Grade is too high \n";
-    }
-};
+    class GradeTooHighExceptions : public std::exception {
+    public:
+        virtual const char* what() const throw() {
+            return ( "Grade is too high\n");
+            // std::cerr << "Grade is too high\n";
+            // exit(0);
+        }
+    };
 
 };
     std::ostream& operator<<(std::ostream& out, Bureaucrat& rhs);
