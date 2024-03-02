@@ -6,12 +6,12 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 16:59:08 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:13:58 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-
+#include "Bureaucrat.hpp"
 
 // Form::Form() : Name("Default"), gradeToSign(0), gradeToExec(0)
 // {

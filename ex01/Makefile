@@ -1,5 +1,5 @@
 NAME = Form
-CC =  c++ -Wall -Wextra -Werror -std=c++98
+CC =  c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM = rm -rf
 FILE = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(FILE:.cpp=.o)
@@ -9,7 +9,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CC) $(OBJ) -o $@
 
-%.o : %.cpp Bureaucrat.hpp Form.hpp
+%.o : %.cpp Form.hpp Bureaucrat.hpp 
 	$(CC) -c $< -o $@ 
 
 clean :

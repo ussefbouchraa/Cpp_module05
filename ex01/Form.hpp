@@ -6,15 +6,15 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:47 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 16:59:11 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:13:50 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once 
 
 #include <iostream>
-#include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class Form
 {
 private:
