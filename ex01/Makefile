@@ -1,7 +1,7 @@
-NAME = Bureaucrat
+NAME = Form
 CC =  c++ -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-FILE = main.cpp Bureaucrat.cpp
+FILE = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(FILE:.cpp=.o)
 
 all : $(NAME)
@@ -9,7 +9,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CC) $(OBJ) -o $@
 
-%.o : %.cpp Bureaucrat.hpp
+%.o : %.cpp Bureaucrat.hpp Form.hpp
 	$(CC) -c $< -o $@ 
 
 clean :
