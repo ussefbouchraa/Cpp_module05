@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:47 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 05:52:47 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/02 16:59:11 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ private:
     
 public:
 
-    Form();
-    Form(const std::string _n, bool _s, const int _gs, const int _ge);
+    // Form();
+    Form(const std::string _n, const int _gs, const int _ge);
     Form(const Form &rhs);
     Form& operator=(const Form &rhs);
     
-    Form &beSigned(Bureaucrat &src);
+    void beSigned( Bureaucrat &src);
     
     std::string getName() const;
     bool getSign() const;

@@ -6,12 +6,13 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 04:31:32 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:09:06 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+// #include "Form.hpp"
 
 class Bureaucrat
 {
@@ -19,11 +20,12 @@ private:
     const  std::string Name;
     int Grade;
 public:
-    Bureaucrat();
+    // Bureaucrat();
     Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat &rhs);
-    
     Bureaucrat & operator=(const Bureaucrat &rhs);
+
+    void signForm(const Form &src)const;
     
     void increment_Grade(); //--
     void decrement_Grade(); //++

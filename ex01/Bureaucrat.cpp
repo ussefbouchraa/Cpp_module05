@@ -6,16 +6,17 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/01 03:35:47 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:08:50 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-Bureaucrat::Bureaucrat() : Name("default"), Grade(150)
-{
-    std::cout << "default Constructor" << std::endl;
-}
+// Bureaucrat::Bureaucrat() : Name("default")
+// {
+//     std::cout << "default Constructor" << std::endl;
+// }
 
 Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n)
 {
@@ -41,8 +42,6 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n)
         std::cerr << "err::" << ex.what();
     }
 }
-
-    
 
 void Bureaucrat::setGrade(int _g)
 {
@@ -88,6 +87,14 @@ void Bureaucrat::increment_Grade()
     {
         std::cerr << e.what();
     }
+}
+
+void Bureaucrat::signForm(const Form& src)const
+{
+    if(src.getSign())
+        std::cerr << this->getName() << " signed " << src.getName()<< std::endl;
+    else
+        std::cerr << this->getName() << " couldn’t sign " << "because " << "reason " << std::endl;     
 }
 
 std::string Bureaucrat::getName()const
