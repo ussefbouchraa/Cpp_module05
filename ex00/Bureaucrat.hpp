@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/01 03:30:44 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:30:29 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ private:
     const  std::string Name;
     int Grade;
 public:
-    Bureaucrat();
+    // Bureaucrat();
     Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat &rhs);
     
@@ -39,8 +39,7 @@ public:
         virtual const char* what() const throw() {
             
             return("Grade is too low\n");
-            // std::cerr <<"Grade is too low\n";
-            // exit(0);
+
         }
     };
 
@@ -48,8 +47,6 @@ public:
     public:
         virtual const char* what() const throw() {
             return ( "Grade is too high\n");
-            // std::cerr << "Grade is too high\n";
-            // exit(0);
         }
     };
 
