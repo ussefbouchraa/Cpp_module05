@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 18:13:58 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:22:38 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 Form::Form(const std::string _n, const int _gs, const int _ge) : Name(_n), gradeToSign(_gs), gradeToExec(_ge)
 {
-    std::cout << "Parametrized Constructor" << std::endl;
+    std::cout << "Form Parametrized Constructor" << std::endl;
 try{
     if(gradeToSign < 1)
         throw(GradeTooHighException());
@@ -48,14 +48,13 @@ Form& Form::operator=(Form const &rhs)
     return(*this);
 }
 
-void Form::beSigned(Bureaucrat &src)
+void Form::beSigned(Bureaucrat &bureaucrat)
 {
-    
     try{
-        if(src.getGrade() < 1)
+        if(bureaucrat.getGrade() < 1 )
             throw(GradeTooHighException());
-        if(src.getGrade() > 150)
-            throw(GradeTooLowException());
+        if(bureaucrat.getGrade() > 150 )
+            throw(GradeTooLowException() );
         this->sign = true;
     }
     catch(GradeTooLowException &ex)
