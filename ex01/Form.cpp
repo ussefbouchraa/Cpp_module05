@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/04 00:22:38 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:48:50 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void Form::beSigned(Bureaucrat &bureaucrat)
     try{
         if(bureaucrat.getGrade() < 1 )
             throw(GradeTooHighException());
-        if(bureaucrat.getGrade() > 150 )
+        if(bureaucrat.getGrade() > 150)
+            throw(GradeTooLowException() );
+        if(bureaucrat.getGrade() > this->getGradeToSign())
             throw(GradeTooLowException() );
         this->sign = true;
     }
