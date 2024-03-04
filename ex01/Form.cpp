@@ -6,17 +6,12 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/04 00:48:50 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/04 01:29:06 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-
-// Form::Form() : Name("Default"), gradeToSign(0), gradeToExec(0)
-// {
-//     std::cout << "Default Constructor" << std::endl;
-// }
 
 Form::Form(const std::string _n, const int _gs, const int _ge) : Name(_n), gradeToSign(_gs), gradeToExec(_ge)
 {
@@ -53,9 +48,7 @@ void Form::beSigned(Bureaucrat &bureaucrat)
     try{
         if(bureaucrat.getGrade() < 1 )
             throw(GradeTooHighException());
-        if(bureaucrat.getGrade() > 150)
-            throw(GradeTooLowException() );
-        if(bureaucrat.getGrade() > this->getGradeToSign())
+        if(bureaucrat.getGrade() > 150 || bureaucrat.getGrade() > this->getGradeToSign())
             throw(GradeTooLowException() );
         this->sign = true;
     }

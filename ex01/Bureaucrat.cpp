@@ -6,18 +6,12 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/04 00:47:27 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/04 01:29:11 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-
-
-// Bureaucrat::Bureaucrat() : Name("default")
-// {
-//     std::cout << "default Constructor" << std::endl;
-// }
 
 Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
 {
@@ -91,35 +85,30 @@ void Bureaucrat::increment_Grade()
 void Bureaucrat::signForm(const Form& form)const
 {
     try{
-            if(form.getSign() && this->getGrade() < form.getGradeToExec())
-                    std::cout << this->getName() << " signed " << form.getName()<< std::endl;
-            else
+        if(form.getSign() && this->getGrade() < form.getGradeToExec())
+                std::cout << this->getName() << " signed " << form.getName()<< std::endl;
+        else
+        {
+            if(this->Grade < 1)
             {
-                if(this->Grade < 1)
-                {
-                    std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because ";
-                    throw(GradeTooHighException());  
-                }
-                if(this->Grade > 150 )
-                {
-                    std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because ";
-                    throw(GradeTooLowException());  
-                }
-                if(this->Grade > form.getGradeToSign() || this->Grade > form.getGradeToExec())
-                {
-                    std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because ";
-                    throw(GradeTooLowException());  
-                }
+                std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because ";
+                throw(GradeTooHighException());  
+            }
+            if(this->Grade > 150 || this->Grade > form.getGradeToSign())
+            {
+                std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because ";
+                throw(GradeTooLowException());  
             }
         }
-            catch(GradeTooHighException &ex)
+    }
+        catch(GradeTooHighException &ex)
+        {
+            std::cerr << ex.what();
+        }
+        catch(GradeTooLowException &ex)
             {
                 std::cerr << ex.what();
-            }
-            catch(GradeTooLowException &ex)
-                {
-                    std::cerr << ex.what();
-                }    
+            }    
 }
 
 std::string Bureaucrat::getName()const
