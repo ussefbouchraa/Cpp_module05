@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:06:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/04 01:35:01 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:28:11 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int main()
 {
+    // Bureaucrat();
 Bureaucrat b1("Devops", 70);
 Form ff("Convocation", 90, 80);
 

@@ -1,5 +1,5 @@
 NAME = Form
-CC =  c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CC =  c++ -Wall -Wextra -Werror -std=c++98 
 RM = rm -rf
 FILE = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(FILE:.cpp=.o)

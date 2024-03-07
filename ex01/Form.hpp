@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:47 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 18:13:50 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:04:45 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 
 class Bureaucrat;
+
 class Form
 {
 private:
@@ -23,21 +24,20 @@ private:
     const int         gradeToSign;
     const int         gradeToExec;
     
+    Form();
 public:
 
-    // Form();
     Form(const std::string _n, const int _gs, const int _ge);
     Form(const Form &rhs);
     Form& operator=(const Form &rhs);
-    
-    void beSigned( Bureaucrat &src);
+    ~Form();
     
     std::string getName() const;
     bool getSign() const;
     int  getGradeToSign() const;
     int  getGradeToExec() const;
-    
-    ~Form();
+    void beSigned( Bureaucrat &bureacrat);
+
 
     class GradeTooLowException : public std::exception 
     {

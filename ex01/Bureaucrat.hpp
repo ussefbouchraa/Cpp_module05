@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/02 18:14:51 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:03:21 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
 #include <iostream>
-
 
 class Form;
 class Bureaucrat
@@ -21,13 +19,14 @@ class Bureaucrat
 private:
     const  std::string Name;
     int Grade;
+
+    Bureaucrat();
 public:
-    // Bureaucrat();
+
     Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat &rhs);
     Bureaucrat & operator=(const Bureaucrat &rhs);
-
-    void signForm(const Form &src)const;
+    ~Bureaucrat();
     
     void increment_Grade(); //--
     void decrement_Grade(); //++
@@ -35,10 +34,9 @@ public:
     std::string getName() const;
     int getGrade() const;
     void setGrade(int _g);
-        
-    ~Bureaucrat();
+    void signForm( Form &form);
 
-        class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception {
     public:
         virtual const char* what() const throw() { return("Grade is too low\n");}
     };

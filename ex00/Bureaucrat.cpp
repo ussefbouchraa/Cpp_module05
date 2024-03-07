@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/04 00:05:42 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/07 09:50:37 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-// Bureaucrat::Bureaucrat() : Name("default"), Grade(150)
-// {
-//     std::cout << "default Constructor" << std::endl;
-// }
+Bureaucrat::Bureaucrat()
+{
+    std::cout << "default Constructor" << std::endl;
+}
 
 Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
 {
@@ -23,15 +23,9 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
     try
  {
     if(_g < 1)
-    {
-        // this->Grade = 1;
         throw (GradeTooHighException());
-    }
     else if(_g > 150)
-    {
-        // this->Grade = 150;   
         throw (GradeTooLowException());
-    }
         this->Grade = _g;
 }      
     catch(const GradeTooLowException& ex){
