@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 17:39:28 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:59:51 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,9 @@ void  Bureaucrat::executeAForm(AForm const &form)
     try
     {
         form.execute(*this);
-        if(form.getSign())
         std::cout << this->Name << " Executed " << form.getName() << std::endl;
     }catch(std::exception &ex)
     {
-          std::cout << this->Name << " couldn't execute " << form.getName() << " because " << ex.what() << std::endl;
+          std::cout << this->Name << " couldn't execute " << form.getName() << " because the grade :" << ex.what() << std::endl;
     }
 }

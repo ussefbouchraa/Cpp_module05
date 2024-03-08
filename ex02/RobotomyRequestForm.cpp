@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:21:48 by ussef             #+#    #+#             */
-/*   Updated: 2024/03/08 13:15:16 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 18:17:59 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor)const
 {
     if(executor.getGrade() > this->getGradeToSign())
         throw AForm::GradeTooLowException();
-        else{
-            
+    else{
+            std::cout << "sda3_sda3_sda3" << std::endl;
+            static int i;
+            if(i % 2 == 0)
+                std::cout << this->target << "has been robotomized successfull" << std::endl;
+            else
+                std::cout << this->target << "the robotomy failed." << std::endl;
+               i++; 
         }
 
         
