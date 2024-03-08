@@ -14,28 +14,19 @@
 #include "AForm.hpp"
 
 
-AForm::AForm():Name(""), gradeToSign(150),gradeToExec(150)
-{
-    std::cout << "Default Constructor" << std::endl;
-}
+// AForm::AForm():Name(""), gradeToSign(150),gradeToExec(150)
+// {
+//     std::cout << "Default Constructor" << std::endl;
+// }
     
 AForm::AForm(const std::string _n, const int _gs, const int _ge) : Name(_n), gradeToSign(_gs), gradeToExec(_ge)
 {
-    std::cout << "AForm Parametrized Constructor" << std::endl;
-try{
+    // std::cout << "Form Parametrized Constructor" << std::endl;
+    this->sign = false;
     if(gradeToSign < 1)
         throw(GradeTooHighException());
     if(gradeToSign > 150)
         throw(GradeTooLowException());
-    }
-    catch(GradeTooHighException &ex)
-    {
-        std::cerr << ex.what();
-    }
-    catch(GradeTooLowException &ex)
-    {
-        std::cerr << ex.what();
-    }
 }
 
 AForm::AForm(AForm const &rhs) : Name(rhs.Name), gradeToSign(rhs.gradeToSign), gradeToExec(rhs.gradeToExec)
@@ -59,7 +50,7 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
     }
     catch(GradeTooLowException &ex)
     {
-        std::cerr << ex.what();
+        std::cerr <<"Form err: " <<  ex.what();
     }
 }
 
@@ -84,14 +75,14 @@ int AForm::getGradeToExec()const
 
 AForm::~AForm()
 {
-    std::cout << "Destructor Called" << std::endl;
+    // std::cout << "Destructor Called" << std::endl;
 }
 
-std::ostream& operator<<(std::ostream &os, const AForm &rhs)
+std::ostream& operator<<(std::ostream &os, const AForm  &form)
 {
-    os << "** [AForm Infos] ** \n";
-    os << "AForm Name: "<< rhs.getName() << "\t\t" ;
-    os << "Grade_ToSign: "<< rhs.getGradeToSign() << "\t";
-    os << "Grade_ToExcecute: "<< rhs.getGradeToExec();
+    os << "*----- Form Infos -----*\n";
+    os << "[ Form Name: "<< form.getName() << "\t|    \t" ;
+    os << "Grade_ToSign: "<< form.getGradeToSign() << "\t|\t";
+    os << "Grade_ToExcecute: "<< form.getGradeToExec() << " ]";
     return(os);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:06:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 14:37:25 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 17:20:27 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int main()
 {
     try
     {
-        Bureaucrat b1("Devops", 170);
+        Bureaucrat b1("Devops", 130);
         Form ff("Convocation", 90, 80);
-
-        ff.beSigned(b1);
+        
+        // ff.beSigned(b1);
+        // std::cout << ff.getSign() << std::endl;
+        std::cout << ff << std::endl;
         b1.signForm(ff);
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() ;
     }
-    
-    // Bureaucrat();
 
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 14:38:06 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 17:18:29 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,63 +26,38 @@ Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
         throw (GradeTooHighException());
     if(_g > 150)
         throw (GradeTooLowException());
-    this->Grade = _g;
 }
 
 void Bureaucrat::setGrade(int _g)
 {
-    try
-    {
         if(_g < 1)
             throw(GradeTooHighException());
         if(_g > 150)
             throw(GradeTooLowException ());
         this->Grade = _g; 
-    }
-    catch(GradeTooLowException &ex){
-        std::cerr << "err:: " << ex.what();
-    }
-    catch(GradeTooHighException &ex){
-        std::cerr << "err:: " << ex.what();
-    }
-    
 }
 
 void Bureaucrat::decrement_Grade() {
-    try {
-        if (Grade > 150)
+        if (Grade + 1 > 150)
             throw  GradeTooLowException();    
         this->Grade++;
-    }
-    catch (const GradeTooLowException &e) { 
-        std::cerr << "Error: " << e.what();
-    }
 }
 
 void Bureaucrat::increment_Grade()
 {
-    try
-    {
-        if(Grade < 1)
+        if(Grade - 1 < 1)
             throw GradeTooHighException();
         this->Grade--;
-    }
-    catch(const GradeTooHighException &e)
-    {
-        std::cerr << e.what();
-    }
 }
 
 
 void Bureaucrat::signForm(Form &form)
 {
-    try
-    {
         form.beSigned(*this);
-        std::cout << this->getName() << " signed " << form.getName()<< std::endl;
-    }catch(GradeTooLowException &ex){
-        std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because " << ex.what() << std::endl ;
-    }    
+        if(form.getSign())
+            std::cout << this->getName() << " signed " << form.getName()<< std::endl;
+        else
+            std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the grade is : " << this->getGrade() << std::endl ; 
 }
 
 std::string Bureaucrat::getName()const

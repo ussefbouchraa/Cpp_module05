@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 14:37:55 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 17:33:26 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,14 @@ Form& Form::operator=(Form const &rhs)
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
     try{
-        if(bureaucrat.getGrade() < 1 )
-            throw(GradeTooHighException());
-        if(bureaucrat.getGrade() > 150 || bureaucrat.getGrade() > this->getGradeToSign())
-            throw(GradeTooLowException() );
-        this->sign = true;
+          if(bureaucrat.getGrade() <= this->gradeToSign)
+                this->sign = true;
+        else
+            throw(GradeTooLowException());
     }
     catch(GradeTooLowException &ex)
     {
         std::cerr << "Form err: "<< ex.what();
-    }
-    catch(GradeTooHighException &ex)
-    {
-        std::cerr << "Form err: "<<ex.what();
     }
 }
 
@@ -84,9 +79,9 @@ Form::~Form()
 
 std::ostream& operator<<(std::ostream &os, const Form &rhs)
 {
-    os << "** [Form Infos] ** \n";
-    os << "Form Name: "<< rhs.getName() << "\t\t" ;
-    os << "Grade_ToSign: "<< rhs.getGradeToSign() << "\t";
-    os << "Grade_ToExcecute: "<< rhs.getGradeToExec();
+    os << "*----- Form Infos -----*\n";
+    os << "[ Form Name: "<< rhs.getName() << "\t|    \t" ;
+    os << "Grade_ToSign: "<< rhs.getGradeToSign() << "\t|\t";
+    os << "Grade_ToExcecute: "<< rhs.getGradeToExec() << " ]";
     return(os);
 }

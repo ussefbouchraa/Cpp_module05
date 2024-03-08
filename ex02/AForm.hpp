@@ -54,4 +54,4 @@ public:
     
 
 };
- std::ostream& operator<<(std::ostream& os, const AForm& rhs);
+ std::ostream& operator<<(std::ostream& os, const AForm& form);
