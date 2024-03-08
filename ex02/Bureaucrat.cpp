@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 17:59:51 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/08 23:27:10 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ Bureaucrat::~Bureaucrat()
 }
 
         
-void Bureaucrat::signAForm(AForm &form)
+void Bureaucrat::signForm(AForm &form)
 {
      form.beSigned(*this);
         if(form.getSign())
             std::cout << this->getName() << " signed " << form.getName()<< std::endl;
         else
-            std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the grade is : " << this->getGrade() << std::endl ;    
+            std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the grade is : " << this->getGrade();    
 }
 
-void  Bureaucrat::executeAForm(AForm const &form)
+void  Bureaucrat::executeForm(AForm const &form)
 {
     try
     {
@@ -91,6 +91,6 @@ void  Bureaucrat::executeAForm(AForm const &form)
         std::cout << this->Name << " Executed " << form.getName() << std::endl;
     }catch(std::exception &ex)
     {
-          std::cout << this->Name << " couldn't execute " << form.getName() << " because the grade :" << ex.what() << std::endl;
+          std::cout << this->Name << " couldn't execute " << form.getName() << " because the grade :" << ex.what() ;
     }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:21:32 by ussef             #+#    #+#             */
-/*   Updated: 2024/03/08 12:39:47 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 20:14:11 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-class RobotomyRequestForm : AForm
+class RobotomyRequestForm : public AForm
 {
 private:
     std::string target;
@@ -26,7 +26,6 @@ public:
 
     RobotomyRequestForm(std::string _target );
     RobotomyRequestForm( const RobotomyRequestForm &rhs);
-    RobotomyRequestForm(std::string _target );
     RobotomyRequestForm& operator=(const RobotomyRequestForm &rhs);
     ~RobotomyRequestForm();
     void execute(const Bureaucrat &executor)const;

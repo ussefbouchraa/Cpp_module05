@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 12:36:00 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 23:25:36 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ public:
     std::string getName() const;
     int getGrade() const;
     void setGrade(int _g);
-    void signAForm(AForm &AForm);
-    void executeAForm(AForm const & AForm);
+    void signForm(AForm &AForm);
+    void executeForm(AForm const & AForm);
     
         
     class GradeTooLowException : public std::exception {

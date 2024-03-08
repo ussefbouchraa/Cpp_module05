@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:17:18 by ussef             #+#    #+#             */
-/*   Updated: 2024/03/08 13:19:05 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 20:13:45 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-class PresidentialPardonForm : AForm
+class PresidentialPardonForm : public AForm
 {
 private:
     std::string target;
@@ -26,7 +26,6 @@ public:
 
     PresidentialPardonForm(std::string _target );
     PresidentialPardonForm( const PresidentialPardonForm &rhs);
-    PresidentialPardonForm(std::string _target );
     PresidentialPardonForm& operator=(const PresidentialPardonForm &rhs);
     ~PresidentialPardonForm();
     void execute(const Bureaucrat &executor)const;
