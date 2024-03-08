@@ -6,7 +6,7 @@
 /*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/06 21:14:22 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 12:36:26 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,25 +97,25 @@ Bureaucrat::~Bureaucrat()
 }
 
         
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signAForm(AForm &AForm)
 {
     try
     {
-        form.beSigned(*this);
-        std::cout << this->getName() << " signed " << form.getName()<< std::endl;
+        AForm.beSigned(*this);
+        std::cout << this->getName() << " signed " << AForm.getName()<< std::endl;
     }catch(GradeTooLowException &ex){
-        std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because " << ex.what() << std::endl ;
+        std::cerr << this->getName() << " couldn’t sign " << AForm.getName() << " because " << ex.what() << std::endl ;
     }    
 }
 
-void  Bureaucrat::executeForm(Form const &form)
+void  Bureaucrat::executeAForm(AForm const &AForm)
 {
     try
     {
-        form.execute(*this);
-        std::cout << this->Name << " Executed " << form.getName() << std::endl;
+        AForm.execute(*this);
+        std::cout << this->Name << " Executed " << AForm.getName() << std::endl;
     }catch(std::exception &ex)
     {
-          std::cout << this->Name << " couldn't execute " << form.getName() << " because " << ex.what() << std::endl;
+          std::cout << this->Name << " couldn't execute " << AForm.getName() << " because " << ex.what() << std::endl;
     }
 }

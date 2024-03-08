@@ -6,14 +6,14 @@
 /*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/07 10:08:24 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 12:36:00 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -32,8 +32,8 @@ public:
     std::string getName() const;
     int getGrade() const;
     void setGrade(int _g);
-    void signForm(Form &form);
-    void executeForm(Form const & form);
+    void signAForm(AForm &AForm);
+    void executeAForm(AForm const & AForm);
     
         
     class GradeTooLowException : public std::exception {

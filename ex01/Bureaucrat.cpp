@@ -6,7 +6,7 @@
 /*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/07 10:03:35 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 14:38:06 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,18 @@
 
 Bureaucrat::Bureaucrat()
 {
-    std::cout << "default Constructor" << std::endl;
+    // std::cout << "default Constructor" << std::endl;
 }
 
 Bureaucrat::Bureaucrat( const std::string _n, int _g) : Name(_n), Grade(_g)
 {
-    std::cout << "Bureaucrat Parametrized Constructor" << std::endl;
-    try
- {
+//     std::cout << "Bureaucrat Parametrized Constructor" << std::endl;
+
     if(_g < 1)
         throw (GradeTooHighException());
     if(_g > 150)
         throw (GradeTooLowException());
     this->Grade = _g;
-}      
-    catch(const GradeTooLowException& ex){
-        std::cerr << "err::" << ex.what();
-    }
-    catch(const GradeTooHighException& ex){
-        std::cerr << "err::" << ex.what();
-    }
 }
 
 void Bureaucrat::setGrade(int _g)
@@ -123,5 +115,5 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat &rhs)
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cerr << this->getName()<< " Destructor Called\n";
+    // std::cerr << this->getName()<< " Destructor Called\n";
 }

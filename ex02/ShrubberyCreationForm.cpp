@@ -6,7 +6,7 @@
 /*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 21:09:31 by ussef             #+#    #+#             */
-/*   Updated: 2024/03/07 12:31:05 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 12:50:52 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 // ShrubberyCreationForm::ShrubberyCreationForm( ):Form(){};
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string _target) : Form("ShrubberyCreationForm", 145, 137), target(_target){}
-
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs) : Form(rhs), target(rhs.target){}
-
+ShrubberyCreationForm::ShrubberyCreationForm(std::string _target) : AForm("ShrubberyCreationForm", 145, 137), target(_target){}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs) : AForm(rhs), target(rhs.target){}
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {
     if(this != &rhs)
@@ -30,7 +28,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){}
 void ShrubberyCreationForm::execute(const Bureaucrat &executor)const
 {
 if(this->getSign() == false || executor.getGrade() > this->getGradeToExec())
-     throw Form::GradeTooLowException();    
+     throw AForm::GradeTooLowException();    
      
      std::fstream filename( (this->getName() + "_shrubbery"));
      filename << "\

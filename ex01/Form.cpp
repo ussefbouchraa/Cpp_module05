@@ -6,7 +6,7 @@
 /*   By: ussef <ussef@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/06 11:24:41 by ussef            ###   ########.fr       */
+/*   Updated: 2024/03/08 14:37:55 by ussef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,12 @@
     
 Form::Form(const std::string _n, const int _gs, const int _ge) : Name(_n), gradeToSign(_gs), gradeToExec(_ge)
 {
-    std::cout << "Form Parametrized Constructor" << std::endl;
-try{
+    // std::cout << "Form Parametrized Constructor" << std::endl;
+    this->sign = false;
     if(gradeToSign < 1)
         throw(GradeTooHighException());
     if(gradeToSign > 150)
         throw(GradeTooLowException());
-    }
-    catch(GradeTooHighException &ex)
-    {
-        std::cerr << ex.what();
-    }
-    catch(GradeTooLowException &ex)
-    {
-        std::cerr << ex.what();
-    }
 }
 
 Form::Form(Form const &rhs) : Name(rhs.Name), gradeToSign(rhs.gradeToSign), gradeToExec(rhs.gradeToExec)
@@ -59,11 +50,11 @@ void Form::beSigned(Bureaucrat &bureaucrat)
     }
     catch(GradeTooLowException &ex)
     {
-        std::cerr << ex.what();
+        std::cerr << "Form err: "<< ex.what();
     }
     catch(GradeTooHighException &ex)
     {
-        std::cerr << ex.what();
+        std::cerr << "Form err: "<<ex.what();
     }
 }
 
@@ -88,7 +79,7 @@ int Form::getGradeToExec()const
 
 Form::~Form()
 {
-    std::cout << "Destructor Called" << std::endl;
+    // std::cout << "Destructor Called" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream &os, const Form &rhs)
