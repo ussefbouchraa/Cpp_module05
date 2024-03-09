@@ -28,7 +28,7 @@ public:
     AForm(const std::string _n, const int _gs, const int _ge);
     AForm(const AForm &rhs);
     AForm& operator=(const AForm &rhs);
-    ~AForm();
+    virtual ~AForm();
 
     
     std::string getName() const;

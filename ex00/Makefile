@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = ex00
 CC =  c++ -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 FILE = main.cpp Bureaucrat.cpp
