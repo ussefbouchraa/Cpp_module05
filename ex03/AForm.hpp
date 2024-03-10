@@ -18,7 +18,7 @@ class Bureaucrat;
 class AForm
 {
 private:
-    const std::string Name;
+    const             std::string Name;
     bool              sign;
     const int         gradeToSign;
     const int         gradeToExec;
@@ -51,11 +51,6 @@ public:
     public:
         virtual const char* what() const throw() { return ( "Grade is too high\n"); }
     };
-
-    // class FormNotSigned : public std::exception {
-    // public : 
-    //     virtual const char* what() const throw() { return( "Form Not signed\n");}
-    // };
     
 
 };

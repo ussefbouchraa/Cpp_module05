@@ -6,12 +6,14 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:28:20 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/08 23:25:36 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+
+class AForm;
 
 class Bureaucrat
 {
@@ -23,24 +25,21 @@ private:
 public:
 
     Bureaucrat(const std::string name, int grade);
-    Bureaucrat(const Bureaucrat &rhs);   
+    Bureaucrat(const Bureaucrat &rhs);
     Bureaucrat & operator=(const Bureaucrat &rhs);
     ~Bureaucrat();
-    void increment_Grade(); //--
-    void decrement_Grade(); //++
     
     std::string getName() const;
     int getGrade() const;
     void setGrade(int _g);
+    void signForm(AForm &AForm);
+    void executeForm(AForm const & AForm);
+    
         
-
-
-        class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception {
     public:
         virtual const char* what() const throw() {
-            
             return("Grade is too low\n");
-
         }
     };
 

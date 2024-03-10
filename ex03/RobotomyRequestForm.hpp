@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 20:06:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:29:11 by ybouchra         ###   ########.fr       */
+/*   Created: 2024/03/08 12:21:32 by ussef             #+#    #+#             */
+/*   Updated: 2024/03/08 20:14:11 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#pragma once
 
-int main()
+#include <iostream>
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+
+class RobotomyRequestForm : public AForm
 {
-    try
-        {   
-            Bureaucrat b("office_001", 150);
-            b.increment_Grade();
-            b.decrement_Grade();
-            std::cout << b;
-            b.setGrade(20);
-            std::cout << b;
-        }
-        catch(std::exception &ex)
-        {
-            std::cerr << "err: " << ex.what();
-        }
-}
+private:
+    std::string target;
+    
+    RobotomyRequestForm();
+public:
+
+    RobotomyRequestForm(std::string _target );
+    RobotomyRequestForm( const RobotomyRequestForm &rhs);
+    RobotomyRequestForm& operator=(const RobotomyRequestForm &rhs);
+    ~RobotomyRequestForm();
+    void execute(const Bureaucrat &executor)const;
+};

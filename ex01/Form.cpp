@@ -6,17 +6,17 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 17:33:26 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/10 03:27:48 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-// Form::Form()
-// {
-//     std::cout << "Default Constructor" << std::endl;
-// }
+Form::Form() : Name(""), gradeToSign(150), gradeToExec(150)
+{
+    std::cout << "Default Constructor" << std::endl;
+}
     
 Form::Form(const std::string _n, const int _gs, const int _ge) : Name(_n), gradeToSign(_gs), gradeToExec(_ge)
 {
