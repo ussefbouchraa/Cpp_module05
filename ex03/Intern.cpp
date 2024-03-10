@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 22:36:35 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:15:02 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:08:24 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,7 @@ AForm* Intern::makeForm(std::string name, std::string target)
     return(NULL);
 }
 
+const char* ::InvalidFormNameException::what() const throw()
+{
+     return(" err : Form Doesn't Created !! check the Name of the Form .\n");
+}

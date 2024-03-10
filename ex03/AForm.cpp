@@ -86,3 +86,13 @@ std::ostream& operator<<(std::ostream &os, const AForm  &form)
     os << "Grade_ToExcecute: "<< form.getGradeToExec() << " ]";
     return(os);
 }
+
+const char* AForm::GradeTooHighException::what() const throw()
+{
+    return ( "Grade is too High\n");
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+    return ( "Grade is too Low\n");
+}

@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 22:36:48 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:07:34 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:04:40 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ class Intern
         ~Intern();
         AForm* makeForm(std::string name, std::string target);
 
-    
 };
-class InvalidFormNameException : public std::exception
-{
+
+class InvalidFormNameException : public std::exception{
     public:
-    virtual const char *what() const throw() {
-        return( " err : Form Doesn't Created !! check the Name of the Form .\n");};
+        virtual const char *what() const throw();    
 };
+
 int check_inp(std::string Name);
 std::string toLowercase(std::string str);
