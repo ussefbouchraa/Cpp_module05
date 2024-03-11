@@ -6,14 +6,14 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 22:36:35 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 22:08:24 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 06:24:54 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
 Intern::Intern(){
-        std::cout << "Default Constructor" << std::endl;
+        // std::cout << "Default Constructor" << std::endl;
 };
 
 Intern::Intern(const Intern &rhs)
@@ -40,9 +40,8 @@ std::string toLowercase(std::string str)
     return str;
 }
 
-int check_inp(std::string Name)
+int check_inp(std::string Name, std::string *arr)
 {
-    std::string arr[3] = {"shrubbery creation", "robotomy request", "presidential pardon" };
     for(int i = 0; i < 3; i++)
     {
         if(arr[i] == toLowercase(Name))
@@ -51,9 +50,18 @@ int check_inp(std::string Name)
     return(-1);
     
 }
+
 AForm* Intern::makeForm(std::string name, std::string target)
 {
-    int index =  check_inp(name);
+
+    std::string *arr = new std::string[3];
+    arr[0] = "shrubbery creation";
+    arr[1] = "robotomy request";
+    arr[2] = "presidential pardon";
+    
+    int index =  check_inp(name, arr);
+    delete []arr;
+
     switch (index)
     {
         case  0:
