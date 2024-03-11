@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:47 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 16:39:26 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 02:04:31 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,18 @@ public:
     
     void beSigned( Bureaucrat &bureacrat);
 
-    class GradeTooLowException : public std::exception 
-    {
-    public:
-        virtual const char* what() const throw() {  return("Grade is too low\n");}
+    class GradeTooLowException : public std::exception {
+        public:
+            const char* what() const throw();
     };
 
     class GradeTooHighException : public std::exception {
+        public:
+            const char* what() const throw();
+    };
+    class FormNotSignedException : public std::exception {
     public:
-        virtual const char* what() const throw() { return ( "Grade is too high\n"); }
+        const char* what() const throw();
     };
 };
 

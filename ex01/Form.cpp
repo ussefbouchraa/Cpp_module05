@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:50:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:27:48 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 04:09:26 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,11 @@ Form& Form::operator=(Form const &rhs)
 
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
-    try{
-          if(bureaucrat.getGrade() <= this->gradeToSign)
-                this->sign = true;
+        if(bureaucrat.getGrade() <= this->gradeToSign)
+            this->sign = true;
         else
             throw(GradeTooLowException());
-    }
-    catch(GradeTooLowException &ex)
-    {
-        std::cerr << "Form err: "<< ex.what();
-    }
+
 }
 
 
@@ -84,4 +79,13 @@ std::ostream& operator<<(std::ostream &os, const Form &rhs)
     os << "Grade_ToSign: "<< rhs.getGradeToSign() << "\t|\t";
     os << "Grade_ToExcecute: "<< rhs.getGradeToExec() << " ]";
     return(os);
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+     return ( "Grade is too High .\n");
+}
+const char* Form::GradeTooLowException::what() const throw()
+{
+    return("Grade is too Low .\n");
 }
