@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 21:56:42 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 04:32:13 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,18 @@ Bureaucrat::~Bureaucrat()
     // std::cerr << this->getName()<< " Destructor Called\n";
 }
 
-        
-void Bureaucrat::signForm(AForm &form)
+ void Bureaucrat::signForm(AForm &form)
 {
-     form.beSigned(*this);
+    try{
+        form.beSigned(*this);
         if(form.getSign())
-            std::cout << this->getName() << " signed " << form.getName()<< std::endl;
-        else
-            std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the grade is : " << this->getGrade();    
-}
+            std::cout << this->getName() << " signed " << form.getName() <<" ."<< std::endl;   
+    }
+    catch(AForm::GradeTooLowException &ex){
+        std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the : " << ex.what() ;             
+    }    
+}       
+
 
 void  Bureaucrat::executeForm(AForm const &form)
 {

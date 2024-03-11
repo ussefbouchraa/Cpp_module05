@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:06:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:12:28 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 05:26:55 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,64 +19,55 @@
 
 int main()
 {
-	AForm *FF = NULL;
+		AForm *F1 = NULL;
+		AForm *F2 = NULL;
+		AForm *F3 = NULL;
+
+
 	try{
 		Intern s;
-		FF = s.makeForm("robotomy request", "bender");
-		std::cout << FF->getName();
-		delete FF;
+		F3 = s.makeForm("SHRUBBERY CREATION", "show");;
+		std::cout << *F3;
+		delete F3;
 	}
 	catch(std::exception &ex){
 		std::cout << ex.what();
-		delete FF;	
+		delete F3;	
 	}
+	
+	std::cout << "\n----------------------------\n";
+
+	try{
+		Intern s;
+		F1 = s.makeForm("robotomy request", "home");
+			std::cout << *F1;
+		delete F1;
+	}
+	catch(std::exception &ex){
+		std::cout << ex.what();
+		delete F1;	
+	}
+	
+	std::cout << "\n----------------------------\n";
+	
+	try{
+		Intern s;
+		F2 = s.makeForm("Presidential Pardon", "work");
+		std::cout << *F2;
+		delete F2;
+	}
+	catch(std::exception &ex){
+		std::cout << ex.what();
+		delete F2;	
+	}
+	
+
+
 }
 
-// 	AForm *F1 = NULL;
-// 	AForm *F2 = NULL;
-// 	AForm *F3 = NULL;
-//    try {
-// 		Bureaucrat	_Bureaucrat("Office", 100);
-// 		F1 = new  ShrubberyCreationForm(_Bureaucrat.getName()); 
-		
-// 		_Bureaucrat.setGrade(-50);
-// 		_Bureaucrat.signForm(*F1);
-// 		_Bureaucrat.executeForm(*F1);
-// 		delete F1;
-		
-// 	} catch (std::exception &e) {
-// 		std::cout << e.what() << std::endl ;
-// 		delete F1;
-// 	}
-	
-// 		//--------------------------------
-		
-//    try {
-// 		Bureaucrat	_Bureaucrat("Office_01", 2);
-// 		F2 = new  PresidentialPardonForm(_Bureaucrat.getName()); 
-// 		_Bureaucrat.signForm(*F2);
-// 		_Bureaucrat.executeForm(*F2);
-// 		delete F2;
-		
-// 	} catch (std::exception &e) {
-// 		std::cout << e.what() << std::endl ;
-// 		delete F2;
-// 	}
-	
-	
-// 	//--------------------------------
-//    try {
-// 		Bureaucrat	_Bureaucrat("Office_987", 6);
-// 		F3 = new  RobotomyRequestForm(_Bureaucrat.getName()); 
-// 		_Bureaucrat.signForm(*F3);
-// 		_Bureaucrat.executeForm(*F3);
-// 		_Bureaucrat.executeForm(*F3);
-// 		delete F3;
-// 	} catch (std::exception &e) {
-// 		std::cout << e.what() << std::endl;
-// 		delete F3;
-// 	}
-// }
+
+
+
 
 	
 

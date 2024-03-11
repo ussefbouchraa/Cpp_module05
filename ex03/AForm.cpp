@@ -42,16 +42,11 @@ AForm& AForm::operator=(AForm const &rhs)
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
-    try{
         if(bureaucrat.getGrade() <= this->gradeToSign)
-                this->sign = true;
+            this->sign = true;
         else
             throw(GradeTooLowException());
-    }
-    catch(GradeTooLowException &ex)
-    {
-        std::cerr <<"Form err: " <<  ex.what();
-    }
+
 }
 
 
