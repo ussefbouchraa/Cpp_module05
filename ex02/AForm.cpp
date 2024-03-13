@@ -42,18 +42,12 @@ AForm& AForm::operator=(AForm const &rhs)
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
-    try{
         if(bureaucrat.getGrade() <= this->gradeToSign)
-                this->sign = true;
+            this->sign = true;
         else
             throw(GradeTooLowException());
-    }
-    catch(GradeTooLowException &ex)
-    {
-        std::cerr <<"Form err: " <<  ex.what();
-    }
-}
 
+}
 
 std::string AForm::getName() const
 {
@@ -83,6 +77,16 @@ std::ostream& operator<<(std::ostream &os, const AForm  &form)
     os << "*----- Form Infos -----*\n";
     os << "[ Form Name: "<< form.getName() << "\t|    \t" ;
     os << "Grade_ToSign: "<< form.getGradeToSign() << "\t|\t";
-    os << "Grade_ToExcecute: "<< form.getGradeToExec() << " ]";
+    os << "Grade_ToExcecute: "<< form.getGradeToExec() << " ]\n";
     return(os);
+}
+
+const char* AForm::GradeTooHighException::what() const throw()
+{
+    return ( "Grade is too High .\n");
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+    return ( "Grade is too Low .\n");
 }

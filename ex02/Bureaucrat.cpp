@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 23:27:10 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 04:29:49 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,14 @@ Bureaucrat::~Bureaucrat()
         
 void Bureaucrat::signForm(AForm &form)
 {
-     form.beSigned(*this);
+    try{
+        form.beSigned(*this);
         if(form.getSign())
-            std::cout << this->getName() << " signed " << form.getName()<< std::endl;
-        else
-            std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the grade is : " << this->getGrade();    
+            std::cout << this->getName() << " signed " << form.getName() <<" ."<< std::endl;   
+    }
+    catch(AForm::GradeTooLowException &ex){
+        std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because the : " << ex.what();             
+    }    
 }
 
 void  Bureaucrat::executeForm(AForm const &form)
@@ -91,6 +94,16 @@ void  Bureaucrat::executeForm(AForm const &form)
         std::cout << this->Name << " Executed " << form.getName() << std::endl;
     }catch(std::exception &ex)
     {
-          std::cout << this->Name << " couldn't execute " << form.getName() << " because the grade :" << ex.what() ;
+          std::cout << this->Name << " couldn't execute " << form.getName() << " because the grade: " << ex.what() ;
     }
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ( "Grade is too High. \n");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ( "Grade is too Low. \n");
 }

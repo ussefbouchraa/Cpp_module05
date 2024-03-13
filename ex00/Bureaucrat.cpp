@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:08:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/08 16:31:56 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:47:21 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,24 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &rhs)
        
     return(*this);
 }
+
+Bureaucrat::~Bureaucrat()
+{
+    // std::cerr << this->getName()<< " Destructor Called\n";
+}
+
 std::ostream& operator<<(std::ostream& out, Bureaucrat &rhs)
 {
     out << rhs.getName() << " bureaucrat grade: " << rhs.getGrade() << std::endl;
     return(out);
 }
 
-Bureaucrat::~Bureaucrat()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    // std::cerr << this->getName()<< " Destructor Called\n";
+    return ( "Grade is too High\n");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ( "Grade is too Low\n");
 }

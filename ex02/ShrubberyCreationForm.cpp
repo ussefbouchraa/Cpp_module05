@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 21:09:31 by ussef             #+#    #+#             */
-/*   Updated: 2024/03/10 03:24:48 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/13 04:35:47 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor)const
 if(this->getSign() == false || executor.getGrade() > this->getGradeToExec())
      throw AForm::GradeTooLowException();    
      
-     std::fstream filename( (this->getName() + "_shrubbery"));
+     std::fstream filename;
+     filename.open((this->getName() + "_shrubbery"));
+     if(!filename.is_open())
+          std::cerr << "Err Creation File Failed " << std::endl;
      filename << "\
         #\n\
        ###\n\

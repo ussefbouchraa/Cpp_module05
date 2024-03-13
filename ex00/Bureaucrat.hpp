@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:29:50 by ybouchra          #+#    #+#             */
-/*   Updated: 2024/03/10 03:28:20 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/11 00:04:32 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,14 @@ public:
         
 
 
-        class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            
-            return("Grade is too low\n");
-
-        }
+         const char* what() const throw();
     };
 
     class GradeTooHighException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return ( "Grade is too high\n");
-        }
+         const char* what() const throw();
     };
 
 };
