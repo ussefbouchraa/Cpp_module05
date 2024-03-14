@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 21:09:31 by ussef             #+#    #+#             */
-/*   Updated: 2024/03/13 04:35:47 by ybouchra         ###   ########.fr       */
+/*   Updated: 2024/03/14 07:15:56 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ if(this->getSign() == false || executor.getGrade() > this->getGradeToExec())
      throw AForm::GradeTooLowException();    
      
      std::fstream filename;
-     filename.open((this->getName() + "_shrubbery"));
-     if(!filename.is_open())
+     filename.open((this->getName() + "_shrubbery"), std::ios::out);
+     if(!filename)
           std::cerr << "Err Creation File Failed " << std::endl;
      filename << "\
         #\n\
